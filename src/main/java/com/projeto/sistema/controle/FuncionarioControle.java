@@ -11,8 +11,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.servlet.ModelAndView;
 
 import com.projeto.sistema.modelos.Funcionario;
-import com.projeto.sistema.repositorio.FuncionarioRepositorio;
 import com.projeto.sistema.repositorio.CidadeRepositorio;
+import com.projeto.sistema.repositorio.FuncionarioRepositorio;
 
 @Controller
 public class FuncionarioControle {
