@@ -18,42 +18,41 @@ public class EstadoControle {
 
 	@Autowired
 	private EstadoRepositorio estadoRepositorio;
-	
+
 	@GetMapping("/cadastroEstado")
 	public ModelAndView cadastrar(Estado estado) {
 		ModelAndView mv = new ModelAndView("administrativo/estados/cadastro");
-		mv.addObject("estado",estado);
+		mv.addObject("estado", estado);
 		return mv;
 	}
-	
+
 	@GetMapping("/listarEstado")
 	public ModelAndView listar() {
 		ModelAndView mv = new ModelAndView("administrativo/estados/lista");
 		mv.addObject("listaEstados", estadoRepositorio.findAll());
 		return mv;
 	}
-	
+
 	@GetMapping("/editarEstado/{id}")
 	public ModelAndView editar(@PathVariable("id") Long id) {
 		Optional<Estado> estado = estadoRepositorio.findById(id);
 		return cadastrar(estado.get());
 	}
-	
+
 	@GetMapping("/removerEstado/{id}")
 	public ModelAndView remover(@PathVariable("id") Long id) {
 		Optional<Estado> estado = estadoRepositorio.findById(id);
 		estadoRepositorio.delete(estado.get());
 		return listar();
 	}
-	
-	
+
 	@PostMapping("/salvarEstado")
 	public ModelAndView salvar(Estado estado, BindingResult result) {
-		if(result.hasErrors()) {
+		if (result.hasErrors()) {
 			return cadastrar(estado);
 		}
 		estadoRepositorio.saveAndFlush(estado);
 		return cadastrar(new Estado());
 	}
-	
+
 }

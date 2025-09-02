@@ -1,6 +1,5 @@
 package com.projeto.sistema;
 
-
 import javax.sql.DataSource;
 
 import org.springframework.context.annotation.Bean;
@@ -15,18 +14,18 @@ public class configuracaoBancoDeDados {
 	@Bean
 	public DataSource dataSource() {
 		DriverManagerDataSource dataSource = new DriverManagerDataSource();
-		dataSource.setDriverClassName("org.postgresql.Driver"); //declara as configurações de acesso
+		dataSource.setDriverClassName("org.postgresql.Driver"); // declara as configurações de acesso
 		dataSource.setUrl("jdbc:postgresql://localhost:5432/loja");
-		dataSource.setUsername("postgres");//usuario
-		dataSource.setPassword("postgres");//senha
+		dataSource.setUsername("postgres");// usuario
+		dataSource.setPassword("postgres");// senha
 		return dataSource;
 	}
-	
+
 	@Bean
 	public JpaVendorAdapter jpaVendorAdapter() {
 		HibernateJpaVendorAdapter adapter = new HibernateJpaVendorAdapter();
-		adapter.setDatabase(Database.POSTGRESQL); //driver do banco
-		adapter.setShowSql(true); //mostrar no console o sql, é interessante
+		adapter.setDatabase(Database.POSTGRESQL); // driver do banco
+		adapter.setShowSql(true); // mostrar no console o sql, é interessante
 		adapter.setGenerateDdl(true);
 		adapter.setDatabasePlatform("org.hibernate.dialect.PostgreSQLDialect");
 		adapter.setPrepareConnection(true);

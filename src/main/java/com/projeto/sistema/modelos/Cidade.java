@@ -9,16 +9,16 @@ import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 
 @Entity
-@Table(name="cidade")
+@Table(name = "cidade")
 public class Cidade implements Serializable {
-	
+
 	private static final long serialVersionUID = 1L;
 	@jakarta.persistence.Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private Long Id;
 	private String nome;
 	private String cep;
-	
+
 	@ManyToOne
 	private Estado estado;
 
@@ -58,6 +58,4 @@ public class Cidade implements Serializable {
 		return serialVersionUID;
 	}
 
-	
-	
 }
